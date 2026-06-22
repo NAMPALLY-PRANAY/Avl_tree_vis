@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Custom excludes for AVL Tree Vis project
+capture_screenshots.py
+python_tk_avl/capture_screenshots.py
+**/capture_screenshots.py
+

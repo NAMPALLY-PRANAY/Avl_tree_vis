@@ -1,0 +1,2 @@
+# Requires Python with tkinter support
+Pillow>=10.0.0
