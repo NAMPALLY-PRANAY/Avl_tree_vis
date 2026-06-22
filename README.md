@@ -2,6 +2,19 @@
 
 An interactive, visual simulator for AVL (Adelson-Velsky and Landis) Trees built in Python using the `tkinter` GUI framework. This tool visualizes AVL insertions, deletions, searches, and real-time self-balancing rotations (LL, RR, LR, RL) frame-by-frame with animation playback controls.
 
+### 📚 What is an AVL Tree?
+An **AVL Tree** is a self-balancing Binary Search Tree (BST) where the heights of the two child subtrees of any node differ by at most one ($|BF| \le 1$). If an insertion or deletion causes the height difference to exceed this balance threshold, the tree self-balances via structural rotations. 
+
+Because it maintains strict balance:
+- **Search, Insertion, and Deletion** operations all have a guaranteed worst-case time complexity of $\mathcal{O}(\log n)$.
+- It is faster than Red-Black trees for search-intensive workloads due to its stricter balance constraint.
+
+### ⚙️ Real-World Applications
+- **Database Indexing**: Used in database storage engines where lookup operations are extremely frequent and latency must be guaranteed.
+- **Virtual Memory Allocation**: Employed in operating system kernels to manage memory pages and search for free space blocks quickly.
+- **Fast Lookup Dictionaries**: Used in high-performance lookup tables and symbol tables inside language compilers.
+- **IP Routing Tables**: Used in network routers to match incoming packet IP addresses with destination routes under tight deadlines.
+
 ---
 
 ## 📸 Interactive UI Gallery
@@ -10,11 +23,11 @@ Here is a visual overview of the application in action:
 
 | Screen | Description | Screenshot |
 | :--- | :--- | :--- |
-| **01. Initial State** | The empty visualizer window, showing stats, controller inputs, and legend overlay. | ![Initial State](images/01_empty_tree.png) |
-| **02. RR Rotation** | The tree balance restored via a Right-Right (RR) rotation (single Left rotation) after inserting `10 -> 20 -> 30`. | ![RR Rotation](images/02_rr_rotation.png) |
-| **03. LR Rotation** | A Left-Right (LR) double rotation triggered by inserting `30 -> 10 -> 20`, balancing the tree with `20` as the root. | ![LR Rotation](images/03_lr_rotation.png) |
-| **04. Traversal Highlight** | Visualizing a search action for value `10`. Traversal paths are highlighted in orange, and the found target is shown in green. | ![Find Node Highlight](images/04_find_node.png) |
-| **05. Deletion & Rebalance** | The tree state after deleting root `20` from the tree, replacing it with its inorder successor, and self-balancing. | ![Delete Node & Rebalance](images/05_delete_node.png) |
+| **01. Initial State** | The empty visualizer window, showing stats, controller inputs, and legend overlay. | ![Initial State](python_tk_avl/images/01_empty_tree.png) |
+| **02. RR Rotation** | The tree balance restored via a Right-Right (RR) rotation (single Left rotation) after inserting `10 -> 20 -> 30`. | ![RR Rotation](python_tk_avl/images/02_rr_rotation.png) |
+| **03. LR Rotation** | A Left-Right (LR) double rotation triggered by inserting `30 -> 10 -> 20`, balancing the tree with `20` as the root. | ![LR Rotation](python_tk_avl/images/03_lr_rotation.png) |
+| **04. Traversal Highlight** | Visualizing a search action for value `10`. Traversal paths are highlighted in orange, and the found target is shown in green. | ![Find Node Highlight](python_tk_avl/images/04_find_node.png) |
+| **05. Deletion & Rebalance** | The tree state after deleting root `20` from the tree, replacing it with its inorder successor, and self-balancing. | ![Delete Node & Rebalance](python_tk_avl/images/05_delete_node.png) |
 
 ---
 
@@ -42,9 +55,10 @@ Here is a visual overview of the application in action:
 
 ### Installation & Run
 
-1. **Clone or navigate** to the workspace root:
+1. **Clone or navigate** to the repository root:
    ```bash
-   cd c:/Users/DELL/Desktop/avl
+   git clone https://github.com/NAMPALLY-PRANAY/Avl_tree_vis.git
+   cd Avl_tree_vis
    ```
 
 2. **Run the Application**:
@@ -68,7 +82,6 @@ python_tk_avl/
 │
 ├── avl.py                 # Core AVL Tree Algorithm and state snapshots (Model)
 ├── main.py                # Tkinter GUI framework and timeline render engine (View/Controller)
-├── capture_screenshots.py # Automation script for integration testing and document snapshot generation
 └── images/                # Saved app snapshots displayed in the README.md
 ```
 
@@ -95,13 +108,6 @@ This file manages the window layout and renders the AVL tree:
 - **Timeline State Management**:
   - Operations return a series of "frames" representing the intermediate states (e.g. visiting node A, then node B, then completing insertion/rotation).
   - Allows stepping backward and forward or playing/pausing the animation transitions.
-
-### 3. Snapshot Automation (`capture_screenshots.py`)
-An automation utility developed using Python's standard `tkinter` and the `Pillow` library to:
-1. Initialize the GUI programmatically.
-2. Direct the application window to perform sequences of insertions, resets, finds, and deletions.
-3. Bring the Tkinter window to the foreground using OS focus tools.
-4. Capture screenshots of target frames and save them directly in `python_tk_avl/images/` for documentation.
 
 ---
 
